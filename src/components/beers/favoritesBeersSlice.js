@@ -7,7 +7,8 @@ const favoritesBeersSlice = createSlice({
     initialState,
     reducers: {
         beerAdded(state, action) {
-            state.push(action.payload)
+            const favoriteBeer = Object.assign({}, action.payload, { rank: 1 })
+            state.push(favoriteBeer)
         },
         beerRemoved(state, action) {
             return state.filter((beer, index) => beer.id !== action.payload)
@@ -15,10 +16,15 @@ const favoritesBeersSlice = createSlice({
         removedAllBeers(state, action) {
             return []
         },
+        rankChanged(state, action) {
+            const { id, rank } = action.payload
+            const beer = state.find((beer) => beer.id === id)
+            beer.rank = rank
+        },
     },
 })
 
-export const { beerAdded, beerRemoved, removedAllBeers } =
+export const { beerAdded, beerRemoved, removedAllBeers, rankChanged } =
     favoritesBeersSlice.actions
 
 export const selectAllFavorites = (state) => state.favoritesBeers

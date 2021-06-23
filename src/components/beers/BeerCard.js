@@ -1,8 +1,12 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Card, Image, Col, Row, Dropdown } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import { isFavoriteById, beerAdded, beerRemoved } from './favoritesBeersSlice'
+import {
+    isFavoriteById,
+    beerAdded,
+    beerRemoved,
+    rankChanged,
+} from './favoritesBeersSlice'
 import { modalShowed } from './beerModalSlice'
 import './beers.css'
 import addToFavImg from '../../assets/images/addtofav.png'
@@ -11,29 +15,37 @@ import removeFromFavImg from '../../assets/images/removefromfav.png'
 export default function BeerCard(props) {
     const dispatch = useDispatch()
     const { isFavCard, id, name, imgUrl } = props
-    const beer = useSelector((state) =>
-        state.beers.data.find((beer) => beer.id === id)
-    )
-    const isInFavorites = useSelector((state) => isFavoriteById(state, id))
-    const [isFavorite, setIsFavorite] = useState(isInFavorites)
-    const [rank, setRank] = useState(1)
 
+    const isInFavorites = useSelector((state) => isFavoriteById(state, id))
+
+    let beer
+    if (!isInFavorites) {
+        beer = useSelector((state) =>
+            state.beers.data.find((beer) => beer.id === id)
+        )
+    } else {
+        beer = useSelector((state) =>
+            state.favoritesBeers.find((beer) => beer.id === id)
+        )
+    }
     const onCardClick = () => {
         dispatch(modalShowed(beer))
     }
 
     const onAddToFavoritesClicked = () => {
         dispatch(beerAdded(beer))
-        setIsFavorite(!isFavorite)
     }
 
     const onRemoveFromFavoritesClicked = () => {
         dispatch(beerRemoved(id))
-        setIsFavorite(!isFavorite)
+    }
+
+    const setRank = (rank) => {
+        dispatch(rankChanged({ id, rank }))
     }
 
     let dropItems = []
-    if (isFavCard) {
+    if (isInFavorites) {
         dropItems = [1, 2, 3, 4, 5].map((rank) => (
             <Dropdown.Item onClick={() => setRank(rank)} key={rank}>
                 {rank}
@@ -49,7 +61,7 @@ export default function BeerCard(props) {
                             <Dropdown>
                                 Rank
                                 <Dropdown.Toggle id="dropdown">
-                                    {rank}
+                                    {beer.rank}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>{dropItems}</Dropdown.Menu>
                             </Dropdown>
@@ -57,11 +69,11 @@ export default function BeerCard(props) {
                     )}
                     <Col>
                         <Image
-                            key={isFavorite}
+                            key={isInFavorites}
                             className="favoriteImg"
-                            src={isFavorite ? removeFromFavImg : addToFavImg}
+                            src={isInFavorites ? removeFromFavImg : addToFavImg}
                             onClick={
-                                isFavorite
+                                isInFavorites
                                     ? onRemoveFromFavoritesClicked
                                     : onAddToFavoritesClicked
                             }
