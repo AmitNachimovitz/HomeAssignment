@@ -1,0 +1,33 @@
+.card {
+    border-color: #085b55;
+    border-width: 2px;
+    min-width: 13rem;
+    margin-bottom: 5rem !important;
+}
+
+.h5 {
+    color: #085b55 !important;
+}
+
+.card-img,
+.card-img-top {
+    margin-top: 1.2rem;
+    height: 15rem;
+    width: auto;
+    object-fit: contain;
+}
+
+.card-header {
+    background-color: #fbebcd;
+}
+
+.card-body:hover {
+    text-decoration-color: #085b55;
+}
+
+.favoriteImg {
+    cursor: pointer;
+    justify-content: end;
+    height: 2rem;
+    width: auto;
+}

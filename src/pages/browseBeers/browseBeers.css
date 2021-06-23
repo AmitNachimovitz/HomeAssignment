@@ -1,0 +1,13 @@
+.card-deck {
+    margin-top: 4rem;
+    justify-content: space-around;
+}
+
+.resultImg {
+    height: 18rem;
+    width: auto;
+}
+
+#paginationBarRow {
+    margin-top: 5rem;
+}

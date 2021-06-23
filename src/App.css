@@ -1,38 +1,116 @@
+@font-face {
+    font-family: 'SandsGreyhoodSeven';
+    src: local('SandsGreyhoodSeven'),
+        url(./assets/fonts/SandsGreyhoodSeven-D4W0.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Ssnicksonone';
+    src: local('Ssnicksonone'),
+        url(./assets/fonts/Ssnicksonone-nyZP.otf) format('opentype');
+}
+
 .App {
-  text-align: center;
+    color: #085b55 !important;
+    font-family: 'Ssnicksonone';
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+h1 {
+    color: #085b55;
+}
+
+.page-link {
+    color: #085b55;
+}
+
+.page-link:hover {
+    color: #fbebcd;
+    background-color: #085b55;
+}
+
+.row {
+    justify-content: center;
+}
+
+.btn {
+    font-family: 'Ssnicksonone';
+    color: #085b55;
+    font-size: large;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn:disabled {
+    color: #085b55;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn:hover {
+    color: #fbebcd;
+    background-color: #085b55;
+    border-color: transparent;
+}
+
+.btn:active,
+.btn:visited,
+.btn:focus {
+    box-shadow: none !important;
+    border-color: #085b55 !important;
+    color: #fbebcd !important;
+    background-color: #085b55 !important;
+}
+
+/* .btn:visited {
+    box-shadow: none !important;
+    border-color: #085b55 !important;
+    color: #fbebcd !important;
+    background-color: #085b55 !important;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+    border-color: #085b55 !important;
+    color: #fbebcd !important;
+    background-color: #085b55 !important;
+} */
+
+.col-form-label {
+    font-size: large !important;
 }

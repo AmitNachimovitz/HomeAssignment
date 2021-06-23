@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'SandsGreyhoodSeven';
+    src: local('SandsGreyhoodSeven'),
+        url(../../assets/fonts/SandsGreyhoodSeven-D4W0.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Ssnicksonone';
+    src: local('Ssnicksonone'),
+        url(../../assets/fonts/Ssnicksonone-nyZP.otf) format('opentype');
+}
+
+.navbar {
+    border-bottom: 10px solid #085b55;
+    background-color: #fbebcd;
+    margin-bottom: 5rem;
+}
+
+.navbar-brand {
+    color: #085b55 !important;
+
+    font-size: 4rem;
+    font-family: 'SandsGreyhoodSeven';
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+}
+
+.nav-link {
+    color: #085b55 !important;
+    font-family: 'Ssnicksonone';
+    font-size: 2rem;
+    margin-top: 1rem;
+}
