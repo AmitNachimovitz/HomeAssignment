@@ -7,6 +7,7 @@ import {
 } from '../../components/beers/favoritesBeersSlice'
 import BeerCard from '../../components/beers/BeerCard'
 import BeerModal from '../../components/beers/BeerModal'
+import noBottle from '../../assets/images/noBottle.png'
 import './favoritesBeers.css'
 
 export default function FavoritesBeers() {
@@ -27,7 +28,7 @@ export default function FavoritesBeers() {
                 isFavCard={true}
                 id={beer.id}
                 name={beer.name}
-                imgUrl={beer.image_url}
+                imgUrl={beer.image_url ? beer.image_url : noBottle}
             />
         </Col>
     ))
